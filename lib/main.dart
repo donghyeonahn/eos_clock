@@ -29,7 +29,10 @@ void main() async {
             return LoginScreen();
           },
         ),
-
+        routes: {
+            '/signup' : (context) => SignUpScreen(),
+            '/login' : (context) => LoginScreen(),
+        }
       ),
   );
 }

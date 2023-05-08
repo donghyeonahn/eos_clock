@@ -1,3 +1,4 @@
+import 'package:eos_clock/view/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +16,17 @@ class HomeScreen extends StatelessWidget {
         title: Text('Chat screen'),
         actions: [
           IconButton(
-            onPressed: () {
-              _auth.signOut();
-            },
-            icon: Icon(Icons.exit_to_app_rounded, color: Colors.white),
+              onPressed: () async {
+                await _auth.signOut();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                        (route) => false);
+              },
+              icon: Icon(
+                  Icons.exit_to_app_rounded,
+                  color: Colors.white
+              )
           )
         ],
       ),
@@ -37,4 +45,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
